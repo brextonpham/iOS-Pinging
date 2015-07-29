@@ -20,6 +20,19 @@
     // Do any additional setup after loading the view.
     
     self.recipients = [[NSMutableArray alloc] init];
+    self.navigationBarView.layer.borderColor = [UIColor colorWithRed:236.0/255.0 green:236.0/255.0 blue:236.0/255.0 alpha:1].CGColor;
+    self.navigationBarView.layer.borderWidth = 0.5f;
+    
+    self.previewYakView.layer.borderColor = [UIColor colorWithRed:199.0/255.0 green:199.0/255.0 blue:199.0/255.0 alpha:1].CGColor;
+    self.previewYakView.layer.borderWidth = 0.5f;
+    
+    self.sendBarView.layer.borderColor = [UIColor colorWithRed:236.0/255.0 green:236.0/255.0 blue:236.0/255.0 alpha:1].CGColor;
+    self.sendBarView.layer.borderWidth = 0.5f;
+    
+    self.contactsTableView.layer.borderColor = [UIColor colorWithRed:236.0/255.0 green:236.0/255.0 blue:236.0/255.0 alpha:1].CGColor;
+    self.contactsTableView.layer.borderWidth = 0.5f;
+    
+    self.previewYakLabel.text = [self.message objectForKey:@"fileContents"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,6 +98,10 @@
 
 - (IBAction)sendButton:(id)sender {
     [self uploadYak];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)backButton:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

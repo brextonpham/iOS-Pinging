@@ -9,6 +9,7 @@
 #import "MainFeedVC.h"
 #import "YakDetailVC.h"
 #import "MainFeedCell.h"
+#import "ComposePingVC.h"
 
 @interface MainFeedVC ()
 
@@ -97,7 +98,9 @@
         [segue.destinationViewController setHidesBottomBarWhenPushed:YES];
         YakDetailVC *detailViewController = (YakDetailVC *)segue.destinationViewController;
         detailViewController.message = self.selectedMessage;
-        
+    } else if ([segue.identifier isEqualToString:@"showComposePing"]) {
+        ComposePingVC *composePingViewController = (ComposePingVC *)segue.destinationViewController;
+        composePingViewController.message = self.selectedMessage;
     }
 }
 
