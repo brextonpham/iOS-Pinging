@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D67F51D31B696E720095ED1C /* ContactsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F51D21B696E720095ED1C /* ContactsVC.m */; };
+		D67F51D61B6975BE0095ED1C /* EditContactsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D67F51D51B6975BE0095ED1C /* EditContactsVC.m */; };
 		D6AC7DB21B66DD4B007F8332 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AC7DB11B66DD4B007F8332 /* main.m */; };
 		D6AC7DB51B66DD4B007F8332 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AC7DB41B66DD4B007F8332 /* AppDelegate.m */; };
 		D6AC7DBB1B66DD4B007F8332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6AC7DB91B66DD4B007F8332 /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		D6AC7E231B693299007F8332 /* more-unselected.imageset copy in Resources */ = {isa = PBXBuildFile; fileRef = D6AC7E221B693299007F8332 /* more-unselected.imageset copy */; };
 		D6AC7E251B6934B5007F8332 /* downvote-disabled.imageset copy in Resources */ = {isa = PBXBuildFile; fileRef = D6AC7E241B6934B5007F8332 /* downvote-disabled.imageset copy */; };
 		D6AC7E271B6934C7007F8332 /* upvote-disabled.imageset copy in Resources */ = {isa = PBXBuildFile; fileRef = D6AC7E261B6934C7007F8332 /* upvote-disabled.imageset copy */; };
+		D6AC7E2A1B695CD7007F8332 /* ComposePingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AC7E291B695CD7007F8332 /* ComposePingVC.m */; };
+		D6AC7E2D1B696719007F8332 /* PingContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AC7E2C1B696719007F8332 /* PingContactCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D67F51D11B696E720095ED1C /* ContactsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsVC.h; sourceTree = "<group>"; };
+		D67F51D21B696E720095ED1C /* ContactsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsVC.m; sourceTree = "<group>"; };
+		D67F51D41B6975BE0095ED1C /* EditContactsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditContactsVC.h; sourceTree = "<group>"; };
+		D67F51D51B6975BE0095ED1C /* EditContactsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditContactsVC.m; sourceTree = "<group>"; };
 		D6AC7DAC1B66DD4B007F8332 /* Pinging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinging.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6AC7DB01B66DD4B007F8332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6AC7DB11B66DD4B007F8332 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -112,6 +120,10 @@
 		D6AC7E221B693299007F8332 /* more-unselected.imageset copy */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "more-unselected.imageset copy"; sourceTree = "<group>"; };
 		D6AC7E241B6934B5007F8332 /* downvote-disabled.imageset copy */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "downvote-disabled.imageset copy"; sourceTree = "<group>"; };
 		D6AC7E261B6934C7007F8332 /* upvote-disabled.imageset copy */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "upvote-disabled.imageset copy"; sourceTree = "<group>"; };
+		D6AC7E281B695CD7007F8332 /* ComposePingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposePingVC.h; sourceTree = "<group>"; };
+		D6AC7E291B695CD7007F8332 /* ComposePingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposePingVC.m; sourceTree = "<group>"; };
+		D6AC7E2B1B696719007F8332 /* PingContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingContactCell.h; sourceTree = "<group>"; };
+		D6AC7E2C1B696719007F8332 /* PingContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingContactCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,10 +200,18 @@
 				D6AC7DFF1B66E37F007F8332 /* SignUpVC.h */,
 				D6AC7E001B66E37F007F8332 /* SignUpVC.m */,
 				D6AC7DB91B66DD4B007F8332 /* Main.storyboard */,
+				D67F51D41B6975BE0095ED1C /* EditContactsVC.h */,
+				D67F51D51B6975BE0095ED1C /* EditContactsVC.m */,
+				D67F51D11B696E720095ED1C /* ContactsVC.h */,
+				D67F51D21B696E720095ED1C /* ContactsVC.m */,
+				D6AC7E281B695CD7007F8332 /* ComposePingVC.h */,
+				D6AC7E291B695CD7007F8332 /* ComposePingVC.m */,
 				D6AC7E121B681737007F8332 /* SendAYakVC.h */,
 				D6AC7E131B681737007F8332 /* SendAYakVC.m */,
 				D6AC7E0F1B67F9EC007F8332 /* MainFeedCell.h */,
 				D6AC7E101B67F9EC007F8332 /* MainFeedCell.m */,
+				D6AC7E2B1B696719007F8332 /* PingContactCell.h */,
+				D6AC7E2C1B696719007F8332 /* PingContactCell.m */,
 				D6AC7E051B67D958007F8332 /* YakDetailVC.h */,
 				D6AC7E061B67D958007F8332 /* YakDetailVC.m */,
 				D6AC7E151B68221F007F8332 /* MainFeedVC.h */,
@@ -366,15 +386,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6AC7E2D1B696719007F8332 /* PingContactCell.m in Sources */,
 				D6AC7E171B68221F007F8332 /* MainFeedVC.m in Sources */,
 				D6AC7E141B681737007F8332 /* SendAYakVC.m in Sources */,
+				D67F51D31B696E720095ED1C /* ContactsVC.m in Sources */,
 				D6AC7E111B67F9EC007F8332 /* MainFeedCell.m in Sources */,
 				D6AC7E011B66E37F007F8332 /* SignUpVC.m in Sources */,
 				D6AC7DB51B66DD4B007F8332 /* AppDelegate.m in Sources */,
 				D6AC7E041B67D576007F8332 /* LoginVC.m in Sources */,
 				D6AC7DFE1B66E22F007F8332 /* MainFeedTVC.m in Sources */,
+				D6AC7E2A1B695CD7007F8332 /* ComposePingVC.m in Sources */,
 				D6AC7DB21B66DD4B007F8332 /* main.m in Sources */,
 				D6AC7E071B67D958007F8332 /* YakDetailVC.m in Sources */,
+				D67F51D61B6975BE0095ED1C /* EditContactsVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +601,7 @@
 				D6AC7DD11B66DD4B007F8332 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6AC7DD21B66DD4B007F8332 /* Build configuration list for PBXNativeTarget "PingingTests" */ = {
 			isa = XCConfigurationList;
@@ -585,6 +610,7 @@
 				D6AC7DD41B66DD4B007F8332 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

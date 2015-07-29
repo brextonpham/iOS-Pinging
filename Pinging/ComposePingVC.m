@@ -1,0 +1,136 @@
+//
+//  ComposePingVC.m
+//  Pinging
+//
+//  Created by Brexton Pham on 7/29/15.
+//  Copyright (c) 2015 Brexton Pham. All rights reserved.
+//
+
+#import "ComposePingVC.h"
+#import "PingContactCell.h"
+
+@interface ComposePingVC ()
+
+@end
+
+@implementation ComposePingVC
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    self.recipients = [[NSMutableArray alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.friendsRelation = [[PFUser currentUser] objectForKey:@"friendsRelation"];
+    
+    PFQuery *query = [self.friendsRelation query];
+    [query orderByAscending:@"username"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (error) {
+            NSLog(@"Error %@ %@", error, [error userInfo]);
+        } else {
+            self.friends = objects;
+            [self.contactsTableView reloadData];
+        }
+    }];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.friends count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    PingContactCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    PFUser *user = [self.friends objectAtIndex:indexPath.row];
+    cell.contactNameLabel.text = user.username;
+    cell.contactPhoneLabel.text = [user objectForKey:@"phone"];
+    
+    if ([self.recipients containsObject:user.objectId]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.contactsTableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    PingContactCell *cell = [self.contactsTableView cellForRowAtIndexPath:indexPath];
+    PFUser *user = [self.friends objectAtIndex:indexPath.row];
+    
+    if (cell.accessoryType == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.recipients addObject:user.objectId];
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.recipients removeObject:user.objectId];
+    }
+    
+}
+
+- (IBAction)sendButton:(id)sender {
+    [self uploadYak];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)uploadYak {
+    NSData *fileData;
+    NSString *fileName;
+    NSString *fileType;
+    NSString *yak = [self.message objectForKey:@"fileContents"];
+    
+    //obtain data if yak actually exists
+    if ([yak length] != 0) {
+        fileData = [yak dataUsingEncoding:NSUTF8StringEncoding];
+        fileName = @"yak";
+        fileType = @"string";
+    }
+    
+    PFFile *file = [PFFile fileWithName:fileName data:fileData];
+    
+    [file saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) { //Alerts if yak doesn't save properly in Parse
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An error occurred!" message:@"Please try sending your message again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertView show];
+        } else {
+            PFObject *message = [PFObject objectWithClassName:@"Messages"];
+            [message setObject:file forKey:@"file"]; //Creating classes to save message to in parse
+            [message setObject:yak forKey:@"fileContents"];
+            [message setObject:fileType forKey:@"fileType"];
+            [message setObject:self.recipients forKey:@"recipientIds"];
+            [message setObject:[[PFUser currentUser] objectId] forKey:@"senderId"];
+            [message setObject:[[PFUser currentUser] username] forKey:@"senderName"];
+            [message setObject:@"ping" forKey:@"pingOrNah"];
+            [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (error) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"An error occurred!" message:@"Please try sending your message again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    [alertView show];
+                } else {
+                    //IT WORKED.
+                }
+            }];
+        }
+    }];
+}
+
+- (void)reset {
+    self.message = nil;
+    [self.recipients removeAllObjects];
+}
+
+@end
