@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //initializing parse
+    [Parse setApplicationId:@"OVKp5NmMjIXJd6XqOSIwxbZzktT2GfikVfoz7IuL"
+                  clientKey:@"t0W3Llo02jwLVjSoH6nWX1mlpC2r9Ii9gKVZ66iJ"];
+    
+    [self customizeUserInterface];
+    
     return YES;
 }
 
@@ -41,5 +49,13 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)customizeUserInterface {
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.373 green:0.855 blue:0.71 alpha:1]];
+    //[[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil]]; //makes title buttons white
+    //[[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+}
+
 
 @end
