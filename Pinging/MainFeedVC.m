@@ -10,6 +10,7 @@
 #import "YakDetailVC.h"
 #import "MainFeedCell.h"
 #import "ComposePingVC.h"
+#import "MoreVC.h"
 
 @interface MainFeedVC ()
 
@@ -101,6 +102,9 @@
     } else if ([segue.identifier isEqualToString:@"showComposePing"]) {
         ComposePingVC *composePingViewController = (ComposePingVC *)segue.destinationViewController;
         composePingViewController.message = self.selectedMessage;
+    } else if ([segue.identifier isEqualToString:@"showMore"]) {
+        MoreVC *moreViewController = (MoreVC *)segue.destinationViewController;
+        moreViewController.currentUser = [PFUser currentUser];
     }
 }
 
@@ -122,7 +126,13 @@
                 if (self.messages != nil) {
                     self.messages= nil;
                 }
-                self.messages = [[NSArray alloc] initWithArray:objects];
+                self.messages = [[NSMutableArray alloc] init];
+                for (int i = 0; i < [objects count]; i++) {
+                    if (![[objects[i] objectForKey:@"pingOrNah"] isEqualToString:@"ping"]) {
+                        [self.messages addObject:objects[i]];
+                    }
+                }
+                //self.messages = [[NSMutableArray alloc] initWithArray:objects];
                 [self.tableView reloadData];
             }
             

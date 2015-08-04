@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
+@property (weak, nonatomic) IBOutlet UISwitch *verifySwitch;
+@property (assign, nonatomic) BOOL phoneVerified;
 
 
 - (IBAction)signupButton:(id)sender;

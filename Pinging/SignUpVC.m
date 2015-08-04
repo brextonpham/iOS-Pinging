@@ -26,6 +26,12 @@
     NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *password = [self.passwordField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *phone = [self.phoneField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if ([self.verifySwitch isOn]) {
+        self.phoneVerified = YES;
+    } else {
+        self.phoneVerified = NO;
+    }
+    NSString * verificationBooleanString = (self.phoneVerified) ? @"True" : @"False";
     
     //alerts user if nothing is inputted into fields
     if ([username length] == 0 || [password length] == 0 || [phone length] == 0) {
@@ -39,6 +45,7 @@
         newUser.password = password;
         
         newUser[@"phone"] = phone;
+        newUser[@"verificationStatus"] = verificationBooleanString;
         
         //signing up and saving the user in parse background
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

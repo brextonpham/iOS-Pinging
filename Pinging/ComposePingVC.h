@@ -15,12 +15,17 @@
 @property (nonatomic, strong) NSArray *friends;
 @property (nonatomic, strong) NSMutableArray *recipients;
 @property (nonatomic, strong) PFObject *message;
+@property (strong, nonatomic) NSMutableArray *verifiedPictures;
+@property (strong, nonatomic) NSMutableArray *notVerifiedPictures;
+@property (strong, nonatomic) PFUser *currentUser;
 
 @property (weak, nonatomic) IBOutlet UITableView *contactsTableView;
 @property (weak, nonatomic) IBOutlet UILabel *previewYakLabel;
 @property (strong, nonatomic) IBOutlet UIView *previewYakView;
 @property (weak, nonatomic) IBOutlet UIView *navigationBarView;
 @property (weak, nonatomic) IBOutlet UIView *sendBarView;
+
+
 
 - (IBAction)sendButton:(id)sender;
 - (IBAction)backButton:(id)sender;

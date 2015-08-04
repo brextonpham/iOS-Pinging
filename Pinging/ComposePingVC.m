@@ -18,6 +18,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIImage *verifiedPicture1 = [UIImage imageNamed:@"icon-badge1.png"];
+    UIImage *verifiedPicture2 = [UIImage imageNamed:@"icon-color-badge2.png"];
+    UIImage *verifiedPicture3 = [UIImage imageNamed:@"icon-color2-badge3.png"];
+    self.verifiedPictures = [[NSMutableArray alloc] initWithObjects:verifiedPicture1, verifiedPicture2, verifiedPicture3, nil];
+    
+    UIImage *notVerifiedPicture1 = [UIImage imageNamed:@"icon-color4.png"];
+    UIImage *notVerifiedPicture2 = [UIImage imageNamed:@"icon-purple5.png"];
+    UIImage *notVerifiedPicture3 = [UIImage imageNamed:@"icon6.png"];
+    self.notVerifiedPictures = [[NSMutableArray alloc] initWithObjects:notVerifiedPicture1, notVerifiedPicture2, notVerifiedPicture3, nil];
     
     self.recipients = [[NSMutableArray alloc] init];
     self.navigationBarView.layer.borderColor = [UIColor colorWithRed:236.0/255.0 green:236.0/255.0 blue:236.0/255.0 alpha:1].CGColor;
@@ -33,6 +42,7 @@
     self.contactsTableView.layer.borderWidth = 0.5f;
     
     self.previewYakLabel.text = [self.message objectForKey:@"fileContents"];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -70,6 +80,13 @@
     PFUser *user = [self.friends objectAtIndex:indexPath.row];
     cell.contactNameLabel.text = user.username;
     cell.contactPhoneLabel.text = [user objectForKey:@"phone"];
+    
+    if ([[user objectForKey:@"verificationStatus"] isEqualToString:@"True"]) {
+        [cell.contactsLogo setImage:self.verifiedPictures[arc4random_uniform(3)]];
+         } else {
+             [cell.contactsLogo setImage:self.notVerifiedPictures[arc4random_uniform(3)]];
+         }
+    
     
     if ([self.recipients containsObject:user.objectId]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;

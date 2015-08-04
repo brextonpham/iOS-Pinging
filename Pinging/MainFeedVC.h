@@ -14,9 +14,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *allUsers;
 @property (nonatomic, strong) PFObject *selectedMessage;
-@property (nonatomic, strong) NSArray *messages;
+@property (nonatomic, strong) NSMutableArray *messages;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UIView *tabBarView;
+
 
 
 @end
