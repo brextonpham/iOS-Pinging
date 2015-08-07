@@ -133,7 +133,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="8VJ-Id-9dr" kind="presentation" identifier="showComposePing" id="h95-Pm-Ppb"/>
+                                                        <segue destination="8VJ-Id-9dr" kind="show" identifier="showComposePing" id="h95-Pm-Ppb"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

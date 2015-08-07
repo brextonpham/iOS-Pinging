@@ -43,6 +43,8 @@
     
     self.previewYakLabel.text = [self.message objectForKey:@"fileContents"];
     
+    self.navigationController.navigationBar.hidden = YES;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
